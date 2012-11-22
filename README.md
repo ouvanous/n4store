@@ -65,7 +65,7 @@ Client usage
     , (err) ->
       # data is appended to the graph
     , "turtle" # format
->>>>>>> 8af387e48e51ca7efefc8dbccdfe67aa2ee17da8
+
 
 ```coffeescript
 # 4store endPoint
