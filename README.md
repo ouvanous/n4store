@@ -176,7 +176,7 @@ n4store.getTypes (err, uris) ->
 # setPrefix add a new prefix in the client prefixes list
 n4store.setPrefix 'test', 'http://test.com/', (err) ->
 
-# prefixes: list of all prefixes used for queries
+# prefixes: object of prefixes used for queries
 console.log n4store.prefixes 
 ```
 
