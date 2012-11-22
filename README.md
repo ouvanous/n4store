@@ -66,7 +66,6 @@ Client usage
       # data is appended to the graph
     , "turtle" # format
 
-
 ```coffeescript
 # 4store endPoint
 endPoint = "http://0.0.0.0:10000"
