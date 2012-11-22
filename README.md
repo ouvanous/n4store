@@ -18,132 +18,133 @@ Create a 4store kb
     $ 4s-httpd -p 10000 demo
 
 Client usage 
-    ```coffee
-    # 4store endPoint
-    endPoint = "http://0.0.0.0:10000"
 
-    # create the 4store client
-    n4store = require('n4store').createClient endPoint
-    
-    
-    # GET: sparql query
-    n4store.get """
-      SELECT ?s ?p ?o 
-      WHERE {
-        ?s ?p ?o
-      }
-    """
-    , (err, sparql) ->
-      # sparql is json results
-      console.log sparql
+```coffeescript
+# 4store endPoint
+endPoint = "http://0.0.0.0:10000"
+
+# create the 4store client
+n4store = require('n4store').createClient endPoint
 
 
-    # POST: sparql UPDATE
-    n4store.post """
-      INSERT {
-        GRAPH <urn:agraph> {
-          <urn:aresource> <urn:apredicate> "a literal"
-        }
-      }
-    """
-    , (err, body) ->
-      console.log body
+# GET: sparql query
+n4store.get """
+  SELECT ?s ?p ?o 
+  WHERE {
+    ?s ?p ?o
+  }
+"""
+, (err, sparql) ->
+  # sparql is json results
+  console.log sparql
 
 
-    # DELETE: delet a graph
-    n4store.delete <urn:agraph>, (err) ->
-      # graph is deleted
-
-
-    # postData: Append data to a graph
-    n4store.postData """
+# POST: sparql UPDATE
+n4store.post """
+  INSERT {
+    GRAPH <urn:agraph> {
       <urn:aresource> <urn:apredicate> "a literal"
-    """
-    , "urn:agraph"
-    , (err) ->
-      # data is appended to the graph
-    , "turtle" # format
+    }
+  }
+"""
+, (err, body) ->
+  console.log body
 
 
-    # postFile: append local file content to a graph
-    n4store.postFile "my-file.ttl"
-    , "urn:agraph" # if null graph will be <urn:my-file.tll>
-    , (err) ->
-      # file content is appended to the graph
-    , "turtle" # format
+# DELETE: delet a graph
+n4store.delete <urn:agraph>, (err) ->
+  # graph is deleted
 
 
-    # postFiles: append local files content to a graph
-    n4store.postFiles ["my-file.ttl", "my-other-file.ttl"]
-    , "urn:agraph" # if null graph will be <urn:*.tll>
-    , (err) ->
-      # files content is appended to the graph
-    , "turtle" # format
+# postData: Append data to a graph
+n4store.postData """
+  <urn:aresource> <urn:apredicate> "a literal"
+"""
+, "urn:agraph"
+, (err) ->
+  # data is appended to the graph
+, "turtle" # format
 
 
-    # put: replace data in a graph
-    n4store.put """
-      <urn:aresource> <urn:apredicate> "a literal"
-    """
-    , "urn:agraph"
-    , (err) ->
-      # data is replaced
-    , "turtle" # format
+# postFile: append local file content to a graph
+n4store.postFile "my-file.ttl"
+, "urn:agraph" # if null graph will be <urn:my-file.tll>
+, (err) ->
+  # file content is appended to the graph
+, "turtle" # format
 
 
-    # putFile: replace local file content in a graph
-    n4store.putFile "my-file.ttl"
-    , "urn:agraph" # if null graph will be <urn:my-file.tll>
-    , (err) ->
-      # file content is replaced in the graph
-    , "turtle" # format
+# postFiles: append local files content to a graph
+n4store.postFiles ["my-file.ttl", "my-other-file.ttl"]
+, "urn:agraph" # if null graph will be <urn:*.tll>
+, (err) ->
+  # files content is appended to the graph
+, "turtle" # format
 
 
-    # putFiles: append local files content to a graph
-    n4store.putFiles ["my-file.ttl", "my-other-file.ttl"]
-    , null
-    , (err) ->
-      # files content is replaced in graphs
-    , "turtle" # format
+# put: replace data in a graph
+n4store.put """
+  <urn:aresource> <urn:apredicate> "a literal"
+"""
+, "urn:agraph"
+, (err) ->
+  # data is replaced
+, "turtle" # format
 
 
-    # CONSTRUCT: return a turtle graph
-    n4store.construct """
-      CONSTRUCT {
-        ?s ?p ?o
-      }
-      WHERE {
-       ?s ?p ?o 
-      }
-    """
-    , (err, turtle) ->
-      console.log turtle
+# putFile: replace local file content in a graph
+n4store.putFile "my-file.ttl"
+, "urn:agraph" # if null graph will be <urn:my-file.tll>
+, (err) ->
+  # file content is replaced in the graph
+, "turtle" # format
 
 
-    # ASK
-    n4store.ask """
-      ASK {
-        ?s foaf:name "Alice"
-      }
-    """, (err, bool) ->
-      console.log bool # true or false
+# putFiles: append local files content to a graph
+n4store.putFiles ["my-file.ttl", "my-other-file.ttl"]
+, null
+, (err) ->
+  # files content is replaced in graphs
+, "turtle" # format
 
 
-    # getGraphs: return an array of graphs URIs
-    n4store.getGraphs (err, uris) ->
-      # array of all graphs URIs
-    
+# CONSTRUCT: return a turtle graph
+n4store.construct """
+  CONSTRUCT {
+    ?s ?p ?o
+  }
+  WHERE {
+   ?s ?p ?o 
+  }
+"""
+, (err, turtle) ->
+  console.log turtle
 
-    # getTypes: return an array of types URIs
-    n4store.getTypes (err, uris) ->
-      # array of all types URIs
+
+# ASK
+n4store.ask """
+  ASK {
+    ?s foaf:name "Alice"
+  }
+""", (err, bool) ->
+  console.log bool # true or false
 
 
-    # setPrefix add a new prefix in the client prefixes list
-    n4store.setPrefix 'test', 'http://test.com/', (err) ->
+# getGraphs: return an array of graphs URIs
+n4store.getGraphs (err, uris) ->
+  # array of all graphs URIs
 
 
-    # prefixes: list of all prefixes used for queries
-    console.log n4store.prefixes 
+# getTypes: return an array of types URIs
+n4store.getTypes (err, uris) ->
+  # array of all types URIs
 
+
+# setPrefix add a new prefix in the client prefixes list
+n4store.setPrefix 'test', 'http://test.com/', (err) ->
+
+
+# prefixes: list of all prefixes used for queries
+console.log n4store.prefixes 
+```
 
