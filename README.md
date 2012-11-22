@@ -18,7 +18,7 @@ Create a 4store kb
     $ 4s-httpd -p 10000 demo
 
 Client usage 
-    
+    ```coffee
     # 4store endPoint
     endPoint = "http://0.0.0.0:10000"
 
