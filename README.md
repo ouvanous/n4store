@@ -13,14 +13,17 @@ n4store is a simple http client for 4store
 
 Create a 4store kb 
 
-    $ $ 4s-backend-setup demo
-    $ $ 4s-backend demo
-    $ $ 4s-httpd -p 10000 demo
+    $ 4s-backend-setup demo
+    $ 4s-backend demo
+    $ 4s-httpd -p 10000 demo
 
-Create a client 
+Client usage 
+    
+    # 4store endPoint
+    endPoint = "http://0.0.0.0:10000"
 
-    $ 
-    $ endPoint = "http://0.0.0.0:10000"
-    $ require('n4store').createClient endPoint
-    $ 
-    $ 
+    # create the 4store client
+    n4store = require('n4store').createClient endPoint
+    
+    
+    
