@@ -1,0 +1,3 @@
+
+<urn:resource3> <urn:predicate2> "resource 2" .
+<urn:resource4> <urn:predicate2> "resource 3" .
