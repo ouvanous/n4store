@@ -18,6 +18,54 @@ Create a 4store kb
     $ 4s-httpd -p 10000 demo
 
 Client usage 
+<<<<<<< HEAD
+=======
+    ```coffee
+    # 4store endPoint
+    endPoint = "http://0.0.0.0:10000"
+
+    # create the 4store client
+    n4store = require('n4store').createClient endPoint
+    
+    
+    # GET: sparql query
+    n4store.get """
+      SELECT ?s ?p ?o 
+      WHERE {
+        ?s ?p ?o
+      }
+    """
+    , (err, sparql) ->
+      # sparql is json results
+      console.log sparql
+
+
+    # POST: sparql UPDATE
+    n4store.post """
+      INSERT {
+        GRAPH <urn:agraph> {
+          <urn:aresource> <urn:apredicate> "a literal"
+        }
+      }
+    """
+    , (err, body) ->
+      console.log body
+
+
+    # DELETE: delet a graph
+    n4store.delete <urn:agraph>, (err) ->
+      # graph is deleted
+
+
+    # postData: Append data to a graph
+    n4store.postData """
+      <urn:aresource> <urn:apredicate> "a literal"
+    """
+    , "urn:agraph"
+    , (err) ->
+      # data is appended to the graph
+    , "turtle" # format
+>>>>>>> 8af387e48e51ca7efefc8dbccdfe67aa2ee17da8
 
 ```coffeescript
 # 4store endPoint
