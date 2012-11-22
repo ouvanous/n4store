@@ -159,6 +159,8 @@ n4store.ask """
   }
 """, (err, bool) ->
   console.log bool # true or false
+```
+
 
 ## helpers
 
