@@ -4,17 +4,22 @@
   "version": "0.0.1", 
   "author": "Samuel Morello <samuel.morello@ouvanous.com>", 
   "main": "index",
+  "homepage": "https://github.com/ouvanous/n4store",
   "dependencies": {
-    "coffee-script": "~1.4.0",
-    "request": "~2.12.0", 
-    "async": "~0.1.22"
+    "coffee-script": ">= 1.4.0",
+    "request": ">= 2.12.0", 
+    "async": ">= 0.1.22"
   },
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "git@github.com:ouvanous/n4store.git"
   }, 
   "scripts": {
     "preinstall": "coffee -o lib -c src/*.coffee", 
     "clean": "rm lib/*.js"
   },
-  "engines" : { "node" : ">= 0.8.0" }
+  "engines" : { "node" : ">= 0.8.14" }, 
+  "keywords": [
+    "4store"
+  ]
 }
