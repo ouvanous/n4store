@@ -15,7 +15,7 @@
     "url": "git@github.com:ouvanous/n4store.git"
   }, 
   "scripts": {
-    "preinstall": "coffee -o lib -c src/*.coffee", 
+    "prepublish": "coffee -o lib -c src/*.coffee", 
     "clean": "rm lib/*.js"
   },
   "engines" : { "node" : ">= 0.8.14" }, 
