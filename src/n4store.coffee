@@ -71,10 +71,9 @@ class N4Store
     @updateUri = "#{endPoint}/update/"
     @dataUri   = "#{endPoint}/data/"
 
-    console.log prefixes
     # extend prefixes
     for prefix, uri of prefixes 
-      @setPrefix[prefix] = uri
+      @setPrefix prefix, uri
 
     # set turtle prefix string
     @setPrefixesStr()
@@ -103,7 +102,6 @@ class N4Store
   # add a prefix to @prefixes
 
   setPrefix: (prefix, uri) ->
-    console.log prefix, uri
     @prefixes[prefix] = uri
     @setPrefixesStr()
 
