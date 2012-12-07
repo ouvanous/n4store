@@ -26,6 +26,7 @@ exec = require('child_process').exec
 # •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
 exports.createClient = (endPoint, prefixes, debug) ->
+  console.log 'create client'
   new N4Store endPoint, prefixes, debug
  
 
@@ -70,6 +71,7 @@ class N4Store
     @updateUri = "#{endPoint}/update/"
     @dataUri   = "#{endPoint}/data/"
 
+    console.log prefixes
     # extend prefixes
     for prefix, uri of prefixes 
       @setPrefix[prefix] = uri
@@ -101,6 +103,7 @@ class N4Store
   # add a prefix to @prefixes
 
   setPrefix: (prefix, uri) ->
+    console.log prefix, uri
     @prefixes[prefix] = uri
     @setPrefixesStr()
 

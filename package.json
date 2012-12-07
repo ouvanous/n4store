@@ -1,7 +1,7 @@
 {
   "name": "n4store", 
   "description": "simple nodejs http client for 4store", 
-  "version": "0.0.3", 
+  "version": "0.0.4", 
   "author": "Samuel Morello <samuel.morello@ouvanous.com>", 
   "main": "index",
   "homepage": "https://github.com/ouvanous/n4store",
